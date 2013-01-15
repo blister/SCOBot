@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>SCOBot by cybercussion</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>SCOBot</h1>
+        <h2>SCORM 2004 / 1.2 Content API. Managed code, unit tests.</h2>
+        <a href="https://github.com/cybercussion/SCORM_API" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>Greetings</h3>
+
+<p>I started this project back in 2009.  Mostly to try and assist anyone new to Shareable Content Object Reference Model (SCORM), used for e-learning and portability between Learning Management (LMS) systems.  There are a few 3rd Party libraries out there, and I wanted something more complete, and open so the rest of the net is engaged.  E-Learning is really a end-to-end journey that can have you pulling your hair out at multiple levels.  I wanted to roll up all the things we commonly do into logical interfaces that give you the option to go commando, or take the kitchen sink with you.  We've all been 'that guy' at some point lugging around hundreds of kilobytes of JavaScript and only using a small subset of its functionality.  I wanted to keep this around &lt; 30KB as a full featured support for SCORM 2004, and like I mentioned, if you choose for just base support, keep it much smaller &lt; 10KB.</p>
+
+<h3>Common Pitfalls</h3>
+
+<p>SCORM is not a web service.  Though it does pass data back and forth, the LMS manages this from client to server.  As a Shareable Content Object (SCO) we connect directly to a local variable the LMS provides called <code>API_1484_11</code>.  Or if your in SCORM 1.2 its just called <code>API</code>.  This is JavaScript-to-JavaScript communication.  No frills, no gimmicks and the Content SCORM_API/SCOBot I've written will connect directly with the LMS and begin to take over to do all the things we commonly need SCORM to do.  I've been in several situations where people tend to think SCORM comes with all the functionality needed to remain true to the specification, but this is not the case.</p>
+
+<p>The LMS will manage the specification by enforcing the Read, Write, Character limits, Character formatting and name spaces all via string based communication.  You do something wrong, LMS will shoot out an error code.  Your data may be truncated.  It could just be a slap on the wrist, but its the fine print you need to watch as a Developer when your interacting with the specification.  No one likes losing student data!</p>
+
+<h3>Dissemination</h3>
+
+<p>I'm slowly building up the Wiki documentation to try and address common questions I get from an array of people working at all levels of learning and teaching.  From Instructional Design, Requirements, Implementation and Release we have to be involved at all levels.  How to score, track progress, record interactions and identify success.  Some of this will be opinion, and at the end of the day I think thats going to be the lesson here.  SCORM is really an active opinion of recording student activity over the last decade.  How you apply it is really up to you.</p>
+
+<h3>Authors and Contributors</h3>
+
+<p>I've relied on several friends and co-workers to stress test, and guide my efforts.  This was something I often get asked why I even did because I think some people feel it may be solved.  But I'm hoping after a few thousands lines and the job Github has done it maybe makes more sense.
+I'd like to thank Brandon Bradley (<a href="https://github.com/brandonbradley" class="user-mention">@brandonbradley</a>) for schemas, diagrams, a shoulder to cry on, and helping me get thru all the specification PDF's unscathed. 
+I'd like to thank the guys over as cloud.scorm.com for furnishing SCORM with some validation and sanity checking because of of this was pretty rough to verify even with the documentation.  I'd also like to Claude Ostyn for his publishings online and tools.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/cybercussion/SCORM_API/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/cybercussion/SCORM_API/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/cybercussion/SCORM_API"></a> is maintained by <a href="https://github.com/cybercussion">cybercussion</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-37674487-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
