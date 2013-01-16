@@ -41,7 +41,8 @@ This project is not the LMS Runtime either.  I know anyone eager to start workin
 <p>Where can I get the LMS Runtime?</p>
 </blockquote>
 
-<p>I have a <code>Local_API_1484_11.js</code> in the project for running locally and pretending to be a LMS when no LMS is present.  This is a very lean spoof of the LMS <code>API_14_84_11</code>.  But remember the flow works the following way:</p>
+<p>Short answer is there are some paid libraries or services online.<br>
+If your willing to make your own, I have a <code>Local_API_1484_11.js</code> in the project for running locally and pretending to be a LMS when no LMS is present.  This is a very lean spoof of the LMS <code>API_14_84_11</code>.  This would be a primer for getting started on your own.  But, remember the flow works the following way:</p>
 
 <ul>
 <li>Student Logs in to LMS</li>
@@ -52,7 +53,7 @@ This project is not the LMS Runtime either.  I know anyone eager to start workin
 <li>SCO can now make get/set value calls</li>
 <li>Commit call will tell the LMS to store the CMI object to the Server</li>
 <li>Terminate call will end the SCO session with a exit type of suspend, normal, logout, time-out or ""</li>
-</ul><p>So the API_1484_11 object needs to be created.  There are some paid options online, and I'm in the middle of working on a bolt-on file that could be language free (JavaScript) that fires events and allows you to plug it in to your system.  I'm just not prepared to release this yet.  Check back later for a update or contact me directly if your eager to take a beta.</p>
+</ul><p>So the API_1484_11 object needs to be created.  I'm in the middle of working on a bolt-on file that could be language free (JavaScript) that fires events and allows you to plug it in to your system.  I'm just not prepared to release this yet.  Check back later for a update or contact me directly if your eager to take a beta.  All the rules of the specification, error codes are enforced by this which is the largest set back time wise.</p>
 
 <p>I often see people try to take short cuts by turning the LMS into a Web Service.  To give you an idea a SCO with 10 interactions and objectives could be making just shy of 600-900 get and set calls each (roughly).  Its meant for this communication to be strictly JavaScript-to-JavaScript not JavaScript-Server-JavaScript.  Latency would most likely make this perform horribly.  I normally advocate to steer clear of this, but I'm sure with projects like <code>node.js</code> and other socket possibilities you might find success.</p>
 
