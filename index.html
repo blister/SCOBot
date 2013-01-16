@@ -13,13 +13,13 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title>SCOBot by cybercussion</title>
+    <title>SCORM_API &amp; SCOBot by cybercussion</title>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <h1>SCOBot</h1>
+        <h1>SCORM_API &amp; SCOBot</h1>
         <h2>SCORM 2004 / 1.2 Content API. Managed code, unit tests.</h2>
         <a href="https://github.com/cybercussion/SCORM_API" class="button"><small>View project on</small>GitHub</a>
       </div>
@@ -30,21 +30,43 @@
         <section id="main-content">
           <h3>Greetings</h3>
 
-<p>I started this project back in 2009.  Mostly to try and assist anyone new to Shareable Content Object Reference Model (SCORM), used for e-learning and portability between Learning Management (LMS) systems.  There are a few 3rd Party libraries out there, and I wanted something more complete, and open so the rest of the net is engaged.  E-Learning is really a end-to-end journey that can have you pulling your hair out at multiple levels.  I wanted to roll up all the things we commonly do into logical interfaces that give you the option to go commando, or take the kitchen sink with you.  We've all been 'that guy' at some point lugging around hundreds of kilobytes of JavaScript and only using a small subset of its functionality.  I wanted to keep this around &lt; 30KB as a full featured support for SCORM 2004, and like I mentioned, if you choose for just base support, keep it much smaller &lt; 10KB.</p>
+<p>I started this project back in 2009.  Mostly to try and assist anyone new to Shareable Content Object Reference Model (SCORM), used for e-learning and portability between Learning Management (LMS) systems.  There are a few 3rd Party libraries out there, and I wanted something more complete, and open so the rest of the net is engaged.  E-Learning is really a end-to-end journey that can have you pulling your hair out at multiple levels.  I wanted to roll up all the things we commonly do into logical interfaces that give you the option to go commando, or take the kitchen sink with you.  We've all been 'that guy' at some point lugging around hundreds of kilobytes of JavaScript and only using a small subset of its functionality.  I wanted to keep this around &lt; 30KB as a full featured support for SCORM 2004, and like I mentioned, if you choose for just base support, keep it much smaller &lt; 10KB.  Normally, after a while though you'll start needing more rich API support to handle scoring, interactions, objectives and all the calls you have to make long hand.  SCOBot simplifies this a bit by boiling up several direct SCORM calls into one API so you don't have to do the guess work.  There are however times when your making a single SCORM call, and I didn't go to the trouble of making more custom hooks for one-to-one calls.</p>
 
 <h3>Common Pitfalls</h3>
 
-<p>SCORM is not a web service.  Though it does pass data back and forth, the LMS manages this from client to server.  As a Shareable Content Object (SCO) we connect directly to a local variable the LMS provides called <code>API_1484_11</code>.  Or if your in SCORM 1.2 its just called <code>API</code>.  This is JavaScript-to-JavaScript communication.  No frills, no gimmicks and the Content SCORM_API/SCOBot I've written will connect directly with the LMS and begin to take over to do all the things we commonly need SCORM to do.  I've been in several situations where people tend to think SCORM comes with all the functionality needed to remain true to the specification, but this is not the case.  It does however supply you the mechanisms to get and set values in a organized Computer Managed Instruction (CMI) object.</p>
+<p>SCORM is not a web service.  Though it does pass data back and forth, the LMS manages this from client to server.  As a Shareable Content Object (SCO) we connect directly to a local variable the LMS provides called <code>API_1484_11</code>.  Or if you're in SCORM 1.2 its just called <code>API</code>.  This is JavaScript-to-JavaScript communication.  No frills, no gimmicks and the Content SCORM_API/SCOBot I've written will connect directly with the LMS and begin to take over to do all the things we commonly need SCORM to do.  I've been in several situations where people tend to think SCORM comes with all the functionality needed to remain true to the specification, but this is not the case.  It does however, supply you the mechanisms to get and set values in a organized Computer Managed Instruction (CMI) object.  End of the day its really a Communication and Packaging specification.
+This project is not the LMS Runtime either.  I know anyone eager to start working with SCORM and their next question is: </p>
+
+<blockquote>
+<p>Where can I get the LMS Runtime?</p>
+</blockquote>
+
+<p>I have a <code>Local_API_1484_11.js</code> in the project for running locally and pretending to be a LMS when no LMS is present.  This is a very lean spoof of the LMS <code>API_14_84_11</code>.  But remember the flow works the following way:</p>
+
+<ul>
+<li>Student Logs in to LMS</li>
+<li>Student chooses an Assignment</li>
+<li>LMS Presents TOC or single SCO</li>
+<li>Student selects content, and the LMS must prepare the CMI object before the SCO loads</li>
+<li>SCO searches for the <code>API_1484_11</code>, and will Initialize</li>
+<li>SCO can now make get/set value calls</li>
+<li>Commit call will tell the LMS to store the CMI object to the Server</li>
+<li>Terminate call will end the SCO session with a exit type of suspend, normal, logout, time-out or ""</li>
+</ul><p>So the API_1484_11 object needs to be created.  There are some paid options online, and I'm in the middle of working on a bolt-on file that could be language free (JavaScript) that fires events and allows you to plug it in to your system.  I'm just not prepared to release this yet.  Check back later for a update or contact me directly if your eager to take a beta.</p>
+
+<p>I often see people try to take short cuts by turning the LMS into a Web Service.  To give you an idea a SCO with 10 interactions and objectives could be making just shy of 600-900 get and set calls each (roughly).  Its meant for this communication to be strictly JavaScript-to-JavaScript not JavaScript-Server-JavaScript.  Latency would most likely make this perform horribly.  I normally advocate to steer clear of this, but I'm sure with projects like <code>node.js</code> and other socket possibilities you might find success.</p>
+
+<p>The SCO does not get the entire CMI Object.  The LMS enforces the specification by allowing you to get/set against it.  Though you could 'get' every single value and store it locally in the SCO I do not advise you do this.</p>
 
 <p>It's normally not clear right off the bat how it all fits together. This will come in time and as I've mentioned in other areas of the project, I can't wrap up hundreds of pages of documentation Advanced Distributed Learning (ADL) has into a few sentences.  You really need to just dive in.</p>
 
 <p>The LMS will manage the specification by enforcing the Read, Write, Character limits, Character formatting and name spaces all via string based communication.  You do something wrong, LMS will shoot out an error code.  Your data may be truncated.  It could just be a slap on the wrist, but its the fine print you need to watch as a Developer when your interacting with the specification.  No one likes losing student data!</p>
 
-<p>I've now included packaging files that aid in importing your project into a LMS.  This has some base concepts of a <code>imsmanifest.xml</code> and sample QUnit tests you can run on a LMS.  Please feel free to customize the tests to fit your needs.  I keep writing more tests as time goes on.</p>
+<p>I've now included packaging files that aid in importing your project into a LMS.  This has some base concepts of a <code>imsmanifest.xml</code> and sample QUnit tests you can run on a LMS.  Please feel free to customize the tests to fit your needs.  I keep writing more tests as time goes on.  Remember not every LMS allows you to zip the containing folder to create a Content Aggregation Model Package or CAM.  You normally need to zip the contents.  So if you have trouble with the import thats a good place to start.</p>
 
 <h3>Dissemination</h3>
 
-<p>I'm slowly building up the Wiki documentation to try and address common questions I get from an array of people working at all levels of learning and teaching.  From Instructional Design, Requirements, Implementation, Release and Package, we have to be involved at all levels.  How to score, track progress, record interactions and identify success.  Some of this will be opinion, and at the end of the day I think thats going to be the lesson here.  SCORM is really an active opinion of recording student activity over the last decade.  How you apply it is really up to you.  Not everything is perfect either. You will run into things it can't do due to arbitrary limitations with in the specification.  Often I find some of these limitations are just originally suggestions and its ultimately up to how the LMS treats and enforces them.</p>
+<p>I'm slowly building up the Wiki documentation to try and address common questions I get from an array of people working at all levels of training and teaching.  From Instructional Design, Requirements, Implementation, Release and a Package, we have to be involved at all levels.  How to score, track progress, record interactions and identify success.  Some of this will be opinion, and at the end of the day I think thats going to be the lesson here.  SCORM is really an active opinion of recording student activity over the last decade.  How you apply it is really up to you.  Not everything is perfect either. You will run into things it can't do due to arbitrary limitations with in the specification.  Often I find some of these limitations are just originally suggestions and its ultimately up to how the LMS treats and enforces them.</p>
 
 <h3>Authors and Contributors</h3>
 
