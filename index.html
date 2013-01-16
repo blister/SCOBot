@@ -58,7 +58,7 @@ If your willing to make your own, I have a <code>Local_API_1484_11.js</code> in 
 
 <p>I often see people try to take short cuts by turning the LMS into a Web Service.  To give you an idea a SCO with 10 interactions and objectives could be making just shy of 600-900 get and set calls each (roughly).  Its meant for this communication to be strictly JavaScript-to-JavaScript not JavaScript-Server-JavaScript.  Latency would most likely make this perform horribly.  I normally advocate to steer clear of this, but I'm sure with projects like <code>node.js</code> and other socket possibilities you might find success.</p>
 
-<p>The SCO does not get the entire CMI Object.  The LMS enforces the specification by allowing you to get/set against it.  Though you could 'get' every single value and store it locally in the SCO I do not advise you do this.</p>
+<p>The SCO does not get the entire CMI Object.  The LMS enforces the specification by allowing you to get/set against it.  Though you could 'get' most readable values, and store it locally in the SCO, <strong>I do not advise you do this</strong>.</p>
 
 <p>It's normally not clear right off the bat how it all fits together. This will come in time and as I've mentioned in other areas of the project, I can't wrap up hundreds of pages of documentation Advanced Distributed Learning (ADL) has into a few sentences.  You really need to just dive in.</p>
 
@@ -69,6 +69,11 @@ If your willing to make your own, I have a <code>Local_API_1484_11.js</code> in 
 <h3>Dissemination</h3>
 
 <p>I'm slowly building up the Wiki documentation to try and address common questions I get from an array of people working at all levels of training and teaching.  From Instructional Design, Requirements, Implementation, Release and a Package, we have to be involved at all levels.  How to score, track progress, record interactions and identify success.  Some of this will be opinion, and at the end of the day I think thats going to be the lesson here.  SCORM is really an active opinion of recording student activity over the last decade.  How you apply it is really up to you.  Not everything is perfect either. You will run into things it can't do due to arbitrary limitations with in the specification.  Often I find some of these limitations are just originally suggestions and its ultimately up to how the LMS treats and enforces them.</p>
+
+<h3>QUnit Tests</h3>
+
+<p>These are meant to show SCORM behaviors as a long hand SCORM_API only, then with SCOBot added.  Lastly, the production version with the scripts minified, and packed.  You will see a range of 100 more tests based on how you run the unit tests.  They will behave differently on resume than they would during a first run.  The tests are not set in stone either, feel free to make adjustments within the <code>js/test/</code> folder respectively.
+<img src="http://cybercussion.com/vault/qunit_test_scobot.jpg" alt="Sample QUnit Test"></p>
 
 <h3>Authors and Contributors</h3>
 
