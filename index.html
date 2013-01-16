@@ -34,19 +34,23 @@
 
 <h3>Common Pitfalls</h3>
 
-<p>SCORM is not a web service.  Though it does pass data back and forth, the LMS manages this from client to server.  As a Shareable Content Object (SCO) we connect directly to a local variable the LMS provides called <code>API_1484_11</code>.  Or if your in SCORM 1.2 its just called <code>API</code>.  This is JavaScript-to-JavaScript communication.  No frills, no gimmicks and the Content SCORM_API/SCOBot I've written will connect directly with the LMS and begin to take over to do all the things we commonly need SCORM to do.  I've been in several situations where people tend to think SCORM comes with all the functionality needed to remain true to the specification, but this is not the case.</p>
+<p>SCORM is not a web service.  Though it does pass data back and forth, the LMS manages this from client to server.  As a Shareable Content Object (SCO) we connect directly to a local variable the LMS provides called <code>API_1484_11</code>.  Or if your in SCORM 1.2 its just called <code>API</code>.  This is JavaScript-to-JavaScript communication.  No frills, no gimmicks and the Content SCORM_API/SCOBot I've written will connect directly with the LMS and begin to take over to do all the things we commonly need SCORM to do.  I've been in several situations where people tend to think SCORM comes with all the functionality needed to remain true to the specification, but this is not the case.  It does however supply you the mechanisms to get and set values in a organized Computer Managed Instruction (CMI) object.</p>
+
+<p>It's normally not clear right off the bat how it all fits together. This will come in time and as I've mentioned in other areas of the project, I can't wrap up hundreds of pages of documentation Advanced Distributed Learning (ADL) has into a few sentences.  You really need to just dive in.</p>
 
 <p>The LMS will manage the specification by enforcing the Read, Write, Character limits, Character formatting and name spaces all via string based communication.  You do something wrong, LMS will shoot out an error code.  Your data may be truncated.  It could just be a slap on the wrist, but its the fine print you need to watch as a Developer when your interacting with the specification.  No one likes losing student data!</p>
 
+<p>I've now included packaging files that aid in importing your project into a LMS.  This has some base concepts of a <code>imsmanifest.xml</code> and sample QUnit tests you can run on a LMS.  Please feel free to customize the tests to fit your needs.  I keep writing more tests as time goes on.</p>
+
 <h3>Dissemination</h3>
 
-<p>I'm slowly building up the Wiki documentation to try and address common questions I get from an array of people working at all levels of learning and teaching.  From Instructional Design, Requirements, Implementation and Release we have to be involved at all levels.  How to score, track progress, record interactions and identify success.  Some of this will be opinion, and at the end of the day I think thats going to be the lesson here.  SCORM is really an active opinion of recording student activity over the last decade.  How you apply it is really up to you.</p>
+<p>I'm slowly building up the Wiki documentation to try and address common questions I get from an array of people working at all levels of learning and teaching.  From Instructional Design, Requirements, Implementation, Release and Package, we have to be involved at all levels.  How to score, track progress, record interactions and identify success.  Some of this will be opinion, and at the end of the day I think thats going to be the lesson here.  SCORM is really an active opinion of recording student activity over the last decade.  How you apply it is really up to you.  Not everything is perfect either. You will run into things it can't do due to arbitrary limitations with in the specification.  Often I find some of these limitations are just originally suggestions and its ultimately up to how the LMS treats and enforces them.</p>
 
 <h3>Authors and Contributors</h3>
 
-<p>I've relied on several friends and co-workers to stress test, and guide my efforts.  This was something I often get asked why I even did because I think some people feel it may be solved.  But I'm hoping after a few thousands lines and the job Github has done it maybe makes more sense.
-I'd like to thank Brandon Bradley (<a href="https://github.com/brandonbradley" class="user-mention">@brandonbradley</a>) for schemas, diagrams, a shoulder to cry on, and helping me get thru all the specification PDF's unscathed. 
-I'd like to thank the guys over as cloud.scorm.com for furnishing SCORM with some validation and sanity checking because of of this was pretty rough to verify even with the documentation.  I'd also like to Claude Ostyn for his publishings online and tools.</p>
+<p>I've relied on several friends to stress test, and guide my efforts.
+I'd like to thank Brandon Bradley (<a href="https://github.com/brandonbradley" class="user-mention">@brandonbradley</a>) for schemas, diagrams, a virtual shoulder to cry on, and helping me get thru all the specification PDF's unscathed. 
+I'd like to thank the guys over as cloud.scorm.com (Rustici) for furnishing SCORM with some validation and sanity checking because of of this was pretty rough to verify even with the documentation.  I'd also like to Claude Ostyn for his publishings online and tools.</p>
         </section>
 
         <aside id="sidebar">
