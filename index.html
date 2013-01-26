@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="SCORM_API &amp; SCOBot : SCORM 2004 / 1.2 Content API. Managed code, unit tests." />
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>SCORM_API &amp; SCOBot by cybercussion</title>
+    <title>SCORM_API &amp; SCOBot</title>
   </head>
 
   <body>
-    <header>
-      <div class="inner">
-        <h1>SCORM_API &amp; SCOBot</h1>
-        <h2>SCORM 2004 / 1.2 Content API. Managed code, unit tests.</h2>
-        <a href="https://github.com/cybercussion/SCORM_API" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>Greetings</h3>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cybercussion/SCORM_API">View on GitHub</a>
+
+          <h1 id="project_title">SCORM_API &amp; SCOBot</h1>
+          <h2 id="project_tagline">SCORM 2004 / 1.2 Content API. Managed code, unit tests.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/cybercussion/SCORM_API/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cybercussion/SCORM_API/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Greetings</h3>
 
 <p>I started this project back in 2009.  Mostly to try and assist anyone new to Shareable Content Object Reference Model (SCORM), used for e-learning and portability between Learning Management (LMS) systems.  There are a few 3rd Party libraries out there, and I wanted something more complete, and open so the rest of the net is engaged.  E-Learning is really a end-to-end journey that can have you pulling your hair out at multiple levels.  I wanted to roll up all the things we commonly do into logical interfaces that give you the option to go commando, or take the kitchen sink with you.  We've all been 'that guy' at some point lugging around hundreds of kilobytes of JavaScript and only using a small subset of its functionality.  I wanted to keep this around &lt; 30KB as a full featured support for SCORM 2004, and like I mentioned, if you choose for just base support, keep it much smaller &lt; 10KB.  Normally, after a while though you'll start needing more rich API support to handle scoring, interactions, objectives and all the calls you have to make long hand.  SCOBot simplifies this a bit by boiling up several direct SCORM calls into one API so you don't have to do the guess work.  There are however times when your making a single SCORM call, and I didn't go to the trouble of making more custom hooks for one-to-one calls.
 This project does assume you're using JQuery, if not, you can go to the extent to replace some of the features I used with counterparts or utilities for things like <code>$.isPlainObject</code>, <code>$.isArray</code>, <code>$.extend</code> etc ...  I have considered removing the dependency.</p>
@@ -54,7 +57,9 @@ If your willing to make your own, I have a <code>Local_API_1484_11.js</code> in 
 <li>SCO can now make get/set value calls</li>
 <li>Commit call will tell the LMS to store the CMI object to the Server</li>
 <li>Terminate call will end the SCO session with a exit type of suspend, normal, logout, time-out or ""</li>
-</ul><p>So the API_1484_11 object needs to be created.  I'm in the middle of working on a bolt-on file that could be language free (JavaScript) that fires events and allows you to plug it in to your system.  I'm just not prepared to release this yet.  Check back later for a update or contact me directly if your eager to take a beta.  All the rules of the specification, error codes are enforced by this which is the largest set back time wise.</p>
+</ul><p><img src="https://dl.dropbox.com/u/3459294/scorm/client-puzzle.jpg" alt="Client Puzzle"></p>
+
+<p>So the API_1484_11 object needs to be created.  I'm in the middle of working on a bolt-on file that could be language free (JavaScript) that fires events and allows you to plug it in to your system.  I'm just not prepared to release this yet.  Check back later for a update or contact me directly if your eager to take a beta.  All the rules of the specification, error codes are enforced by this which is the largest set back time wise.</p>
 
 <p>I often see people try to take short cuts by turning the LMS into a Web Service.  To give you an idea a SCO with 10 interactions and objectives could be making just shy of 600-900 get and set calls each (roughly).  Its meant for this communication to be strictly JavaScript-to-JavaScript not JavaScript-Server-JavaScript.  Latency would most likely make this perform horribly.  I normally advocate to steer clear of this, but I'm sure with projects like <code>node.js</code> and other socket possibilities you might find success.</p>
 
@@ -82,26 +87,18 @@ You absolutely can use these to test a LMS for SCORM support.  If your having tr
 I've relied on several friends to stress test, and guide my efforts.
 Brandon Bradley (<a href="https://github.com/brandonbradley" class="user-mention">@brandonbradley</a>) contributed schemas, diagrams, a virtual shoulder to cry on, and helping me get thru all the specification PDF's unscathed. 
 I'd like to thank the guys over as (<a href="http://cloud.scorm.com">cloud.scorm.com</a>) (<a href="https://github.com/RusticiSoftware">Rustici</a>) for furnishing SCORM with some validation and sanity checking because of of this was pretty rough to verify even with the documentation.  I'd also like to Claude Ostyn for his publishings online and tools.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/cybercussion/SCORM_API/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/cybercussion/SCORM_API/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/cybercussion/SCORM_API"></a> is maintained by <a href="https://github.com/cybercussion">cybercussion</a>.</p>
-
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
 
-            <script type="text/javascript">
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">SCORM_API &amp; SCOBot maintained by <a href="https://github.com/cybercussion">cybercussion</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -111,6 +108,7 @@ I'd like to thank the guys over as (<a href="http://cloud.scorm.com">cloud.scorm
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
