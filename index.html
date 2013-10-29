@@ -16,14 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/cybercussion/SCORM_API">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/cybercussion/SCOBot">View on GitHub</a>
 
           <h1 id="project_title">SCORM_API &amp; SCOBot</h1>
           <h2 id="project_tagline">SCORM 2004 / 1.2 Content API. Managed code, unit tests.</h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/cybercussion/SCORM_API/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/cybercussion/SCORM_API/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/cybercussion/SCOBot/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cybercussion/SCOBot/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -31,9 +31,12 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h2>Greetings</h2>
+        <h2>
+<a name="greetings" class="anchor" href="#greetings"><span class="octicon octicon-link"></span></a>Greetings</h2>
 
-<p>I started this project back in 2009.  Mostly to try and assist anyone new to Shareable Content Object Reference Model (SCORM), used for e-learning and portability between Learning Management (LMS) systems.  There are a few 3rd Party libraries out there, and I wanted something more complete, and open so the rest of the net is engaged.  E-Learning is really a end-to-end journey that can have you pulling your hair out at multiple levels.  I wanted to roll up all the things we commonly do into logical interfaces that give you the option to go commando, or take the kitchen sink with you.  We've all been 'that guy' at some point lugging around hundreds of kilobytes of JavaScript and only using a small subset of its functionality.  I wanted to keep this around &lt; 30KB as a full featured support for SCORM 2004, and like I mentioned, if you choose for just base support, keep it much smaller &lt; 10KB.  Normally, after a while though you'll start needing more rich API support to handle scoring, interactions, objectives and all the calls you have to make long hand.  SCOBot simplifies this a bit by boiling up several direct SCORM calls into one API so you don't have to do the guess work.  There are however times when you're making a single SCORM call, and I didn't go to the trouble of making more custom hooks for one-to-one calls.</p>
+<p>This project was started in 2009, mostly to try and assist anyone new to Shareable Content Object Reference Model (SCORM), used for e-learning and portability between Learning Management (LMS) systems. I can't replace the thousands of pages documented by Advanced Distributed Learning.  One of the most common mistakes is understanding the line of communication, and how it all works.  Two major components to the communication model are the LMS Runtime, and the SCO.  I do not think this was spelled out well enough, so I will do my best to call it out in the first paragraph.  This project, directly focuses on the SCO connection to the LMS Runtime, and all communication there-after.  There are a few 3rd Party libraries out there, and I wanted something more modern/complete, and open so the rest of the internet is engaged.  E-Learning is really an end-to-end journey that can have you pulling your hair out at multiple levels.  I wanted to roll up all the things we commonly do into logical interfaces that give you the option to go commando, or take everything and the kitchen sink with you.
+We've all been guilty at some point lugging around hundreds of kilobytes of JavaScript, and only using a small subset of its functionality - SCORM libraries are no different.  Especially in early versions of SCORM where most the specification was "optional".  If you can't rely on features on a LMS, you normally don't use them right?  This had most content providers into a pattern of a "I was here" style presentation.  Bare minimum approaches, which you don't even need a SCORM framework/library for.
+I wanted to keep this around ~30KB as a full featured support for SCORM 2004. As mentioned, if you choose just the base support, keep it much smaller &lt; 10KB.  Normally, after a while though you'll start needing more rich API support to handle rolled up scoring, interactions, objectives, suspend data, and all the calls you have to make long hand.  Not only that, they are formatted specifically to SCORM delimiters, and formats that require parsing.  SCOBot simplifies this a bit by boiling up several direct SCORM calls into one API so you don't have to do the guess work.  There are however times when you're making a single SCORM call, and I didn't go to the trouble of making more custom hooks for one-to-one calls.</p>
 
 <blockquote>
 <p>Why JQuery?</p>
@@ -51,39 +54,43 @@
 <p>Why Open Source?</p>
 </blockquote>
 
-<p>I started off the same way most start with SCORM.  Lots of belly aching ensued!  Then one day it clicked, and I wanted to know more about it.  This is the product of what I learned, and because there are so many nice people I've learned from online since the mid-90's I wanted to give back.  </p>
+<p>I started off the same way most start with SCORM.  There are hundreds of pages of specification to read.  Then one day it clicked, and I wanted to know more about it thru Test Driven Development.  This is the product of what I learned, and because there are so many nice people I've learned from online since the mid-90's I wanted to give back.  </p>
 
-<h2>Common Pitfalls</h2>
+<h2>
+<a name="common-pitfalls" class="anchor" href="#common-pitfalls"><span class="octicon octicon-link"></span></a>Common Pitfalls</h2>
 
-<p>SCORM is JavaScript-to-JavasScript communication. No frills, no gimmicks and the Content SCORM_API/SCOBot I've written will connect directly with the LMS and begin to take over to do all the things we commonly need SCORM to do.  Though it does pass data back and forth, the LMS manages this from client to server through commit and terminate.  However, the specification does leave a non-cached option which can talk directly to the server.  I just have never seen a good functioning example of this because all the ones I've seen were using XmlHttpRequest and wow, how it lagged.
+<p>SCORM is JavaScript-to-JavasScript communication. No frills, no gimmicks, and the Content SCORM_API/SCOBot I've written will connect directly with the LMS and begin to take over to do all the things we commonly need SCORM content to do.  Though it does pass data back and forth, the LMS manages this from client to server through commit and terminate.  However, the specification does leave a non-cached option which can talk directly to the server.  I just have never seen a good functioning example of this because all the ones I've seen were using XmlHttpRequest, and it lagged much like a denial of service attack.
 As a Shareable Content Object (SCO) we connect directly to a local variable the LMS provides called <code>API_1484_11</code>.  Or if you're in SCORM 1.2 its just called <code>API</code>.  I've been in several situations where people tend to think SCORM comes with all the functionality needed to remain true to the specification, but this is not the case.  It does however, supply you the mechanisms to get and set values in a organized Computer Managed Instruction (CMI) object.  End of the day its really a Communication and Packaging/Sequence specification.  Learning Management (LMS) behaviors change from system to system.  This has caused a wide spread lack of faith in what you consider to be "portable" and at the end of the day what works and doesn't.<br><strong>This project is not the LMS Runtime</strong> either.  Wrapper, Driver and other names were taken so because of my mixed SCORM support I opted to start the base file off as SCORM_API.  Later SCOBot hit me as a nice name for my auto-pilot file that would try to make this all easier.  I know anyone eager to start working with SCORM and their next question is: </p>
 
 <blockquote>
 <p>Where can I get the LMS Runtime?</p>
 </blockquote>
 
-<p>Short answer is there are some paid libraries or services online. If you're non-commercial, there may be more options. 
-If you're willing to make your own, I have a <code>Local_API_1484_11.js</code> in the project for running locally and pretending to be a LMS when no LMS is present.  This is a very lean spoof of the LMS <code>API_14_84_11</code>.  I have one coming, but its a ton of work.<br><img src="https://dl.dropbox.com/u/3459294/scorm/client-puzzle.jpg" alt="Client Puzzle"></p>
+<p>Short answer is there are some paid libraries or services online. If you're non-commercial, there may be more options. Please get in contact with me if you are non-profit as I have a pre-release version of the API_1484_11.
+If you're willing to make your own, I have a <code>Local_API_1484_11.js</code> in the project for running locally and pretending to be a LMS when no LMS is present.  This is a very lean spoof of the LMS <code>API_14_84_11</code>.  I have one coming, but it's a ton of work.  Truthfully, even more than the Content work I've done in this project.<br><img src="https://dl.dropbox.com/u/3459294/scorm/client-puzzle.jpg" alt="Client Puzzle"></p>
 
 <p>The LMS Runtime is really just a controller.  It's managing preparing the data, and allowing you to interact with it.  There are things you can and can't do, and it will throw errors when you do something your not suppose to.  If you are a database developer or familiar with this, its kind of like talking to a defined database, but there are more rules about what you can read and write to.  SCORM is entirely string based.  So a sample call <code>var bookmark = lms.GetValue('cmi.location');</code> will return the value for the location the SCO has set.  If you are familiar with working with JSON, or native objects in JavaScript, know that you can't just call <code>cmi.location</code> and yield the same result.  The LMS Runtime manages the interface to this data.</p>
 
 <p>I will circle back later to briefly cover the administration/packaging element to SCORM to tie in the Content Aggregation Model (CAM) Package visually, and how that plugs in.</p>
 
-<h2>Dissemination</h2>
+<h2>
+<a name="dissemination" class="anchor" href="#dissemination"><span class="octicon octicon-link"></span></a>Dissemination</h2>
 
-<p>I'm slowly building up the Wiki documentation to try and address common questions I get from an array of people working at all levels of training and teaching.  From Instructional Design, Requirements, Implementation, Release and a Package, we have to be involved at all levels.  How to score, track progress, record interactions and identify success.  Some of this will be opinion, and at the end of the day I think thats going to be the lesson here.  SCORM is really an active opinion of recording student activity over the last decade.  How you apply it is really up to you.  Not everything is perfect either. You will run into things it can't do due to arbitrary limitations with in the specification.  Often I find some of these limitations are just originally suggestions and its ultimately up to how the LMS treats and enforces them.</p>
+<p>From Instructional Design, Requirements, Implementation, Release and a Package, we have to be involved at all levels.  How to score, track progress, record interactions and identify success.  Some of this will be opinion, and at the end of the day I think thats going to be the lesson here.  SCORM is really an active opinion of recording student activity over the last decade.  How you apply it is really up to you.  Not everything is perfect either. You will run into things it can't do due to arbitrary limitations with in the specification.  Often I find some of these limitations are just originally suggestions, and it's ultimately up to how the LMS treats and enforces them.  I also realize we live in a legacy space right now, with several dated systems in circulation, but millions in content built.  As browsers modernize, the old Internet Explorer 'hacks' don't work as well, and this has lead to many having to update their content.  Also on the mobile front, many that were using Adobe Flash are having to do the same.</p>
 
-<h2>QUnit Tests</h2>
+<h2>
+<a name="qunit-tests" class="anchor" href="#qunit-tests"><span class="octicon octicon-link"></span></a>QUnit Tests</h2>
 
 <p>These are meant to show SCORM behaviors with each variation of how you could use the project. With SCOBot added or just the SCORM_API doing everything longhand yourself.  Lastly, the production version with the scripts minified, and packed.  You will see a range of 100 more tests based on how you run the unit tests.  They will behave differently on resume than they would during a first run.  The tests are not set in stone either, feel free to make adjustments within the <code>js/test/</code> folder respectively.
 <img src="http://cybercussion.com/vault/qunit_test_scobot.jpg" alt="Sample QUnit Test">
-You absolutely can use these to test a LMS for SCORM support.  If your having trouble understanding what the tests entail or prove/justify I will be adding documentation to the Wiki in time to cover step by step the unit tests in detail.</p>
+You absolutely can use these to test a LMS for SCORM support.  If your having trouble understanding what the tests entail or prove/justify I will be adding documentation to the Wiki in time to cover step by step the unit tests in detail.  If you or your company are considering buying a LMS for SCORM 2004 support, by all means, take the package, zip it up and upload it to test how it behaves.</p>
 
-<h2>Authors and Contributors</h2>
+<h2>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h2>
 
-<p>I'm Mark Statkus (<a href="https://github.com/cybercussion" class="user-mention">@cybercussion</a>) and have worked with e-learning since the early 2000's.
+<p>Mark Statkus (<a href="https://github.com/cybercussion" class="user-mention">@cybercussion</a>) has worked with e-learning since the early 2000's.  I've worked on several half-implemented projects that lead me to building tools, and even this project for transparency/troubleshooting.
 Brandon Bradley (<a href="https://github.com/brandonbradley" class="user-mention">@brandonbradley</a>) contributed schemas, diagrams, a virtual shoulder to cry on, and helping me get thru all the specification PDF's unscathed. 
-I'd like to thank the guys over as (<a href="http://cloud.scorm.com">cloud.scorm.com</a>) (<a href="https://github.com/RusticiSoftware">Rustici</a>) for furnishing SCORM with some validation and sanity checking because of of this was pretty rough to verify even with the documentation.  I'd also like to Claude Ostyn for his publishings online and tools.</p>
+I'd like to thank the guys over as (<a href="http://cloud.scorm.com">cloud.scorm.com</a>) (<a href="https://github.com/RusticiSoftware">Rustici</a>) for furnishing SCORM with some validation and sanity checking because much of this was pretty rough to verify even with the documentation.  I'd also like to Claude Ostyn for his publishings online and tools and opinions.</p>
       </section>
     </div>
 
